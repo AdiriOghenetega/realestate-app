@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Property from "../../components/property";
-import { Flex, Box, Text, Icon } from "@chakra-ui/react";
+import { Flex, Box, Text, Icon,useColorModeValue,useMediaQuery } from "@chakra-ui/react";
 import { fetchProperties, baseUrl } from "../../utils/fetch";
 import { AiFillFilter } from "react-icons/ai";
 import noresult from "../../public/noresult.svg";
@@ -11,12 +11,14 @@ import SearchProperties from "../../components/search";
 const Search = ({ data }) => {
   const [filter, setFilter] = useState(false);
   const router = useRouter();
+  const bg = useColorModeValue("gray.100","gray.700")
+  const [mobileView,laptopView] = useMediaQuery(["(max.width: 600px)","(min.width: 601px)"])
 
   return (
     <Flex direction="column">
       <Flex
         direction="column"
-        bg="gray.100"
+        bg={bg}
         marginTop="2"
         alignItems="center"
         justifyContent="center"
@@ -35,7 +37,7 @@ const Search = ({ data }) => {
         </Flex>
         {filter && <SearchProperties />}
       </Flex>
-      <Text p="2em 9em" paddingBottom="0" fontWeight="black" fontSize="xl">
+      <Text  paddingBottom="0" fontWeight="black" fontSize={laptopView ? "xl" : "large"} textAlign="center" >
         Properties {router.query.purpose}
       </Text>
       {data.length === 0 ? (
@@ -43,7 +45,7 @@ const Search = ({ data }) => {
           direction="column"
           alignItems="center"
           justifyContent="center"
-          p="2em"
+          p="0 2em"
         >
           <Image src={noresult} alt="no result" />
           <Text fontWeight="black">No result</Text>
@@ -54,10 +56,10 @@ const Search = ({ data }) => {
           position="relative"
           alignItems="center"
           justifyContent="center"
-          p="4em"
+          p={laptopView ? "0 4em":"0 0.5em"}
         >
           {data.map((property) => {
-            return <Property property={property} />;
+            return <Property key={property.id} property={property} />;
           })}
         </Flex>
       )}

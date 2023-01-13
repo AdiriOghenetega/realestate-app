@@ -1,14 +1,17 @@
 import React from "react";
 import Banner from "../components/banner";
-import { Flex, Box } from "@chakra-ui/react";
+import { Flex,useMediaQuery } from "@chakra-ui/react";
 import Property from "../components/property";
 import { fetchProperties, baseUrl } from "../utils/fetch";
 
 const index = ({ forRent, forSale }) => {
-  console.log(forRent, forSale);
+  const [mobileView, laptopView] = useMediaQuery([
+    "(max-width: 600px)",
+    "(min-width: 601px)",
+  ]);
   return (
     <>
-    <Flex direction="column" position="relative">
+    <Flex direction="column" position="relative" >
       <Flex alignItems="center" justifyContent="center">
         <Banner
           title="RENT A HOME"
@@ -18,7 +21,7 @@ const index = ({ forRent, forSale }) => {
           purpose= "for-rent"
         />
       </Flex>
-      <Flex flexWrap="wrap" position="relative" alignItems="center" justifyContent="center"  p="4em">
+      <Flex flexWrap="wrap" position="relative" alignItems="center" justifyContent="center"  p={laptopView ? "4em":"1em 0.5em"} >
         {forRent.map((property) => {
           return <Property key={property.id} property={property} />;
         })}
@@ -32,7 +35,7 @@ const index = ({ forRent, forSale }) => {
           purpose="for-sale"
         />
       </Flex>
-      <Flex flexWrap="wrap" position="relative" alignItems="center" justifyContent="center"  p="4em">
+      <Flex flexWrap="wrap" position="relative" alignItems="center" justifyContent="center"  p={laptopView ? "4em":"1em 0.5em"}>
         {forSale.map((property) => {
           return <Property key={property.id} property={property} />;
         })}

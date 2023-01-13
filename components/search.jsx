@@ -59,7 +59,7 @@ const SearchProperties = () => {
               
             }} >
               {data?.items?.map(opt=>{
-                return <option value={opt.value}>{opt.name}</option>
+                return <option value={opt.value} key={opt.name}>{opt.name}</option>
               })}
             </Select>
             </Flex>

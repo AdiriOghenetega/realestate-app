@@ -20,12 +20,12 @@ const Header = () => {
    </Box>
   <Hide below='md'>
    <Flex justifyContent="space-around" alignItems="center" w="50%" >
-   <Box fontSize="sm"><Link href="/properties/search">Search</Link></Box>
-   <Box fontSize="sm"><Link href="/properties/search?purpose=for-sale">Buy Property</Link></Box>
-   <Box fontSize="sm"><Link href="/properties/search?purpose=for-rent">Rent Property</Link></Box>
+   <Link href="/properties/search" passHref><Box fontSize="sm">Search</Box></Link>
+   <Link href="/properties/search?purpose=for-sale" passHref><Box fontSize="sm">Buy Property</Box></Link>
+   <Link href="/properties/search?purpose=for-rent"><Box fontSize="sm">Rent Property</Box></Link>
    <Box>
    <Switch onChange={()=>toggleColorMode()} m="2" />
-   <Link href="/"><IconButton icon={<AiFillHome />} fontSize="sm" /></Link>
+   <Link href="/" passHref><IconButton icon={<AiFillHome />} fontSize="sm" /></Link>
    </Box>
    </Flex>
   </Hide>
@@ -36,10 +36,10 @@ const Header = () => {
   <Menu>
    <MenuButton as={IconButton} icon={<AiOutlineMenu />} />
     <MenuList>
-      <MenuItem fontSize="sm"><Link href="/properties/search">Search</Link></MenuItem>
-      <MenuItem fontSize="sm"><Link href="/properties/search?purpose=for-sale">Buy Property</Link></MenuItem>
-      <MenuItem fontSize="sm"><Link href="/properties/search?purpose=for-rent">Rent Property</Link></MenuItem>
-      <MenuItem fontSize="sm"><Link href="/"><IconButton  icon={<AiFillHome />} fontSize="sm" /></Link></MenuItem>
+    <Link href="/properties/search" passHref><MenuItem fontSize="sm">Search</MenuItem></Link>
+    <Link href="/properties/search?purpose=for-sale" passHref><MenuItem fontSize="sm">Buy Property</MenuItem></Link>
+    <Link href="/properties/search?purpose=for-rent" passHref><MenuItem fontSize="sm">Rent Property</MenuItem></Link>
+    <Link href="/" passHref> <MenuItem fontSize="sm"><IconButton  icon={<AiFillHome />} fontSize="sm" /></MenuItem></Link>
     </MenuList>
     </Menu>
   </Show>

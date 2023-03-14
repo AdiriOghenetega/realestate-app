@@ -30,7 +30,7 @@ const Property = ({
   return (
     <>
 <Link href={`/properties/${externalID}`} passHref>
-    <Flex direction="column" position="relative" m={laptopView ? "2":"0"} w={laptopView ? "350px":"100%"} justifyContent="flex-start" flexWrap="wrap" p={laptopView ? "10px 10px":"15px 1px"} >
+    <Flex direction="column" position="relative" m={laptopView ? "2":"0"} w={laptopView ? "350px":"270px"}  justifyContent="flex-start" flexWrap="wrap" p={laptopView ? "10px 10px":"15px 1px"} >
       <Box position="relative" width="100%" height="320px" >
         <Image
           src={coverPhoto.url}
